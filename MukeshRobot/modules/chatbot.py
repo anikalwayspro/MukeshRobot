@@ -1,6 +1,7 @@
 import html
 import json
 import re
+import random
 from time import sleep
 import requests
 from telegram import (
@@ -132,29 +133,5 @@ def chatbot(update: Update, context: CallbackContext):
         message.reply_text(url)
 
 
-
-
-
-
-
-CHATBOTK_HANDLER = CommandHandler("chatbot", mukesh, run_async=True)
-ADD_CHAT_HANDLER = CallbackQueryHandler(mukeshadd, pattern=r"add_chat", run_async=True)
-RM_CHAT_HANDLER = CallbackQueryHandler(mukeshrm, pattern=r"rm_chat", run_async=True)
-CHATBOT_HANDLER = MessageHandler(
-    Filters.text
-    & (~Filters.regex(r"^#[^\s]+") & ~Filters.regex(r"^!") & ~Filters.regex(r"^\/")),
-    chatbot,
-    run_async=True,
-)
-
-dispatcher.add_handler(ADD_CHAT_HANDLER)
-dispatcher.add_handler(CHATBOTK_HANDLER)
-dispatcher.add_handler(RM_CHAT_HANDLER)
-dispatcher.add_handler(CHATBOT_HANDLER)
-
-__handlers__ = [
-    ADD_CHAT_HANDLER,
-    CHATBOTK_HANDLER,
-    RM_CHAT_HANDLER,
-    CHATBOT_HANDLER,
-]
+async def bot.send_msg(_, message):
+    reactions = random.choice(['👍', '❤️', '🔥', '🥰', '👏', '😁', '🤔', '😱', '🎉', '🤩', '🙏', '👌', '🕊', '🤡', '🥴', '😍', '🐳', '❤️‍🔥', '🌚', '💯', '🤣', '🤗', '🫡', '✍️', '🤝', '🙈', '😇', '👀', '👨‍💻', '👻', '💋', '💔', '🤨', '😐', '⚡️', '🏆', '😢', '🍾', '🍓', '😈', '😴', '🤓', '🎃', '🎅', '🎄', '☃️', '💅', '🤪', '🆒', '🗿', '💘', '😘', '💊', '🦄', '🙉', '🙊', '😎', '👾', '🤷‍♂️', '🤷', '🤷‍♀️', '😡
